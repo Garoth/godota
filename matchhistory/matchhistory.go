@@ -11,8 +11,7 @@ import (
 
 var (
     API_URL = "http://api.steampowered.com/IDOTA2Match_" + globals.API_REALM +
-        "/GetMatchHistory/v001?key=" + globals.API_KEY +
-        "&account_id=51945535"
+        "/GetMatchHistory/v001?key=" + globals.API_KEY
 )
 
 type Match struct {
@@ -44,7 +43,9 @@ func MatchFeed(AccountId uint64) chan Match {
         var startMatchId uint64 = 99999999999999
 
         for {
-            url := API_URL + "&start_at_match_id=" +
+            url := API_URL + "&account_id=" +
+                strconv.FormatUint(AccountId, 10) +
+                "&start_at_match_id=" +
                 strconv.FormatUint(startMatchId - 1, 10)
             resp, err := http.Get(url)
             if err != nil {
