@@ -27,20 +27,20 @@ type MatchDetails struct {
             Item3          uint64   `json:"item_3"`
             Item4          uint64   `json:"item_4"`
             Item5          uint64   `json:"item_5"`
-            Kills           uint64   `json:"kills"`
-            Deaths          uint64   `json:"deaths"`
-            Assists         uint64   `json:"assists"`
+            Kills          uint64   `json:"kills"`
+            Deaths         uint64   `json:"deaths"`
+            Assists        uint64   `json:"assists"`
             LeaverStatus   uint64   `json:"leaver_status"`
-            Gold            uint64   `json:"gold"`
+            Gold           uint64   `json:"gold"`
             LastHits       uint64   `json:"last_hits"`
-            Denies          uint64   `json:"denies"`
-            GoldPerMin    uint64   `json:"gold_per_min"`
-            XpPerMin      uint64   `json:"xp_per_min"`
+            Denies         uint64   `json:"denies"`
+            GoldPerMin     uint64   `json:"gold_per_min"`
+            XpPerMin       uint64   `json:"xp_per_min"`
             GoldSpent      uint64   `json:"gold_spent"`
             HeroDamage     uint64   `json:"hero_damage"`
             TowerDamage    uint64   `json:"tower_damage"`
             HeroHealing    uint64   `json:"hero_healing"`
-            Level           uint64   `json:"level"`
+            Level          uint64   `json:"level"`
 
             Abilities []struct {
                 Ability   uint64   `json:"ability"`

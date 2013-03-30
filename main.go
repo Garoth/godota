@@ -16,12 +16,12 @@ func main() {
 }
 
 func FindPlayerMatches() {
-    //var accountId uint64 = 51945535 // Arkanian
+    var accountId uint64 = 51945535 // Arkanian
     //var accountId uint64 = 51971876 // Kevlarman
     //var accountId uint64 = 75685110 // Nik
     //var accountId uint64 = 53071885 // Spen
     //var accountId uint64 = 105771979 // Skeleton Burglar
-    var accountId uint64 = 114426207 // Polychromatic Hyphen
+    //var accountId uint64 = 114426207 // Polychromatic Hyphen
 
     var totalKills, totalDeaths uint64 = 0, 0
     maxMatches := 100
