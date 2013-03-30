@@ -7,7 +7,9 @@ Currently a work in progress.
 TODO
 ----
 
-- [x] @mentions, #refs, [links](), **formatting**, and <del>tags</del> supported
-- [x] list syntax required (any unordered or ordered list supported)
-- [x] this is a complete item
-- [ ] this is an incomplete item
+- Get hero names from hero IDs, and vice versa
+- Get player names from ID, and vice versa
+- Figure out how to make options passing to API calls easy / complete
+- Create a system to batch together lots Match Details and make them concurrent
+  rather than doing one at a time
+- Command line arguments for default binary
