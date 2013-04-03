@@ -14,7 +14,8 @@ var (
 
 func main() {
     //FindPlayerMatches()
-    FindCascadeMatches()
+    //FindCascadeMatches()
+    FindGamesTogether()
 }
 
 func FindPlayerMatches() {
@@ -25,7 +26,6 @@ func FindPlayerMatches() {
     //var accountId uint64 = 105771979 // Skeleton Burglar
     //var accountId uint64 = 114426207 // Polychromatic Hyphen
     var accountId uint64 = 96033201 // Regie
-
 
     var totalKills, totalDeaths uint64 = 0, 0
     maxMatches := 100
@@ -65,5 +65,26 @@ func FindCascadeMatches() {
         match, ok = <-in
         log.Println("Found Cascade TMM Match: " +
             strconv.FormatUint(match.MatchId, 10))
+    }
+}
+
+func FindGamesTogether() {
+    //var accountId uint64 = 51945535 // Arkanian
+    //var accountId uint64 = 51971876 // Kevlarman
+    //var accountId uint64 = 75685110 // Nik
+    //var accountId uint64 = 53071885 // Spen
+    //var accountId uint64 = 105771979 // Skeleton Burglar
+    //var accountId uint64 = 114426207 // Polychromatic Hyphen
+    // var accountId uint64 = 96033201 // Regie
+    accountIds := []uint64{96033201, 51971876}
+
+    in := filter.ByPlayersInvolved(matchhistory.ForAccountId(51945535),
+        accountIds)
+
+    log.Printf("Looking for matches with players %+v", accountIds)
+    var match matchhistory.Match
+    for ok := true; ok; {
+        match, ok = <-in
+        log.Printf("Found match: %d: %+v", match.MatchId, match)
     }
 }
