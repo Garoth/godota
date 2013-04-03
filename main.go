@@ -6,6 +6,7 @@ import (
     "time"
     "godota/matchhistory"
     "godota/matchdetails"
+    "godota/heroes"
     "godota/filter"
 )
 
@@ -15,7 +16,17 @@ var (
 func main() {
     //FindPlayerMatches()
     //FindCascadeMatches()
-    FindGamesTogether()
+    //FindGamesTogether()
+    ListHeroes()
+}
+
+func ListHeroes() {
+    in := heroes.List()
+    list := <-in
+
+    for _, hero := range list.Heroes {
+        log.Printf("%v %v", hero.Id, hero.LocalizedName)
+    }
 }
 
 func FindPlayerMatches() {
@@ -69,13 +80,6 @@ func FindCascadeMatches() {
 }
 
 func FindGamesTogether() {
-    //var accountId uint64 = 51945535 // Arkanian
-    //var accountId uint64 = 51971876 // Kevlarman
-    //var accountId uint64 = 75685110 // Nik
-    //var accountId uint64 = 53071885 // Spen
-    //var accountId uint64 = 105771979 // Skeleton Burglar
-    //var accountId uint64 = 114426207 // Polychromatic Hyphen
-    // var accountId uint64 = 96033201 // Regie
     accountIds := []uint64{96033201, 51971876}
 
     in := filter.ByPlayersInvolved(matchhistory.ForAccountId(51945535),
@@ -85,6 +89,6 @@ func FindGamesTogether() {
     var match matchhistory.Match
     for ok := true; ok; {
         match, ok = <-in
-        log.Printf("Found match: %d: %+v", match.MatchId, match)
+        log.Printf("Found match: %d", match.MatchId)
     }
 }

@@ -13,3 +13,4 @@ TODO
 - Create a system to batch together lots Match Details and make them concurrent
   rather than doing one at a time
 - Command line arguments for default binary
+- Create common code for loading read url into struct
