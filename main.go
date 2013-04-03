@@ -6,26 +6,30 @@ import (
     "time"
     "godota/matchhistory"
     "godota/matchdetails"
+    "godota/filter"
 )
 
 var (
 )
 
 func main() {
-    FindPlayerMatches()
+    //FindPlayerMatches()
+    FindCascadeMatches()
 }
 
 func FindPlayerMatches() {
-    var accountId uint64 = 51945535 // Arkanian
+    //var accountId uint64 = 51945535 // Arkanian
     //var accountId uint64 = 51971876 // Kevlarman
     //var accountId uint64 = 75685110 // Nik
     //var accountId uint64 = 53071885 // Spen
     //var accountId uint64 = 105771979 // Skeleton Burglar
     //var accountId uint64 = 114426207 // Polychromatic Hyphen
+    var accountId uint64 = 96033201 // Regie
+
 
     var totalKills, totalDeaths uint64 = 0, 0
     maxMatches := 100
-    matchStream := matchhistory.MatchFeed(accountId)
+    matchStream := matchhistory.ForAccountId(accountId)
 
     var match matchhistory.Match
     for ok, count := true, 0; ok && count < maxMatches; count++ {
@@ -54,14 +58,12 @@ func FindPlayerMatches() {
 }
 
 func FindCascadeMatches() {
-    matchStream := matchhistory.MatchFeed(51945535)
+    in := filter.MatchHistoryByLobby(matchhistory.ForAccountId(51945535), 5)
 
     var match matchhistory.Match
-    for ok:= true; ok; {
-        match, ok = <-matchStream
-        if match.LobbyType == 5 {
-            log.Println("Found Cascade TMM Match: " +
-                strconv.FormatUint(match.MatchId, 10))
-        }
+    for ok := true; ok; {
+        match, ok = <-in
+        log.Println("Found Cascade TMM Match: " +
+            strconv.FormatUint(match.MatchId, 10))
     }
 }

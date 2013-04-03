@@ -36,7 +36,7 @@ type MatchHistory struct {
     } `json:"result"`
 }
 
-func MatchFeed(AccountId uint64) chan Match {
+func ForAccountId(AccountId uint64) chan Match {
     matchStream := make(chan Match)
 
     go func() {
