@@ -10,9 +10,11 @@ import (
 )
 
 var (
+    // Example:
+    // http://api.steampowered.com/IDOTA2Match_570/GetMatchDetails/v001
+    // ?key=22F5871D45A320ED6FB4FCF242F308D7&match_id=410088332
     API_URL = "http://api.steampowered.com/IDOTA2Match_" + globals.API_REALM +
-        "/GetMatchDetails/v001?key=" + globals.API_KEY +
-        "&account_id=51945535"
+        "/GetMatchDetails/v001?key=" + globals.API_KEY
 )
 
 type MatchDetails struct {

@@ -10,8 +10,12 @@ import (
 )
 
 var (
+    // Example:
+    // http://api.steampowered.com/IDOTA2Match_570/GetMatchHistory/v001
+    // ?key=22F5871D45A320ED6FB4FCF242F308D7&skill=0&account_id=51945535
+    // &start_at_match_id=999999999999
     API_URL = "http://api.steampowered.com/IDOTA2Match_" + globals.API_REALM +
-        "/GetMatchHistory/v001?key=" + globals.API_KEY
+        "/GetMatchHistory/v001?key=" + globals.API_KEY + "&skill=0"
 )
 
 type Match struct {
@@ -40,7 +44,7 @@ func ForAccountId(AccountId uint64) chan Match {
     matchStream := make(chan Match)
 
     go func() {
-        var startMatchId uint64 = 99999999999999
+        var startMatchId uint64 = 99999999999
 
         for {
             url := API_URL + "&account_id=" +
